@@ -1,0 +1,58 @@
+<robot name="3DOF_WORM">
+    <link name="link1">
+        <visual>
+            <origin xyz="0 0 0" rpy="-1.57 0 0"/>
+            <geometry>
+                <mesh filename="./link-1.gltf"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="joint1" type="continuous">
+        <parent link="link1"/>
+        <child link="link2"/>
+        <origin xyz="0 0 0.1004" rpy="0 0 0" />
+        <axis xyz="1 0 0" />
+    </joint>
+
+    <link name="link2">
+        <visual>
+            <origin xyz="-0.009 0 0" rpy="-1.57 0 0"/>
+            <geometry>
+                <mesh filename="./link-2.gltf"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="joint2" type="continuous">
+        <parent link="link2"/>
+        <child link="link3"/>
+        <origin xyz="0 0 0.255" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <link name="link3">
+        <visual>
+            <origin xyz="0 -0.007 0" rpy="1.57 3.14 0"/>
+            <geometry>
+                <mesh filename="./link-3.gltf"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="joint3" type="continuous">
+        <parent link="link3"/>
+        <child link="link4"/>
+        <origin xyz="0 0 0.22" rpy="0 0 0"/>
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <link name="link4">
+        <visual>
+            <origin xyz="0 0.015 0" rpy="-1.57 0 -1.57"/>
+            <geometry>
+                <mesh filename="./link-4.gltf"/>
+            </geometry>
+        </visual>
+    </link>
+</robot>
