@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot name="rrr_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- Include xacro files
+<!-- <xacro:include filename="common_properties.xacro" /> -->
+<xacro:include filename="robot_macro.xacro" /> 
+
+<!-- Properties -->
+
+
+<!-- ================================= -->
+<!-- |  INERTIAL PROPERTIES - LINKS  | -->
+<!-- ================================= -->
+
+<!-- Link 1 -->
+<xacro:link-1 name="link-1" roll="-1.57"/>
+
+<!-- Link 2 -->
+<xacro:link-2 name="link-2" pos_x="-0.009" roll="-1.57"/> 
+
+<!-- Link 3 -->
+<xacro:link-3 name="link-3" pos_y="-0.007" roll="1.57" pitch="3.14" />
+
+<!-- Link 4 -->
+<xacro:link-4 name="link-4" pos_y="0.015" roll="-1.57" yaw="-1.57"/> 
+
+<!-- Pallet -->
+<xacro:pallet name="pallet" pos_z="0.522" roll="-1.57"/> 
+
+
+<!-- ================================= -->
+<!-- | KINEMATIC PROPERTIES - JOINTS | -->
+<!-- ================================= -->
+
+<!-- Link1_Joint REVOLUTE-->
+<xacro:revolute_joint name="link1_joint" parent="link-1" child="link-2" axis="x"  pos_z="0.1004" lower = "-1.57" upper = "1.57" effort = "120" velocity = "5.02654824" /> 
+
+<!-- Link2_Joint REVOLUTE-->
+<xacro:revolute_joint name="link2_joint" parent="link-2" child="link-3" axis="y" pos_z="0.255" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/> 
+
+<!-- Link3_Joint REVOLUTE-->
+<xacro:revolute_joint name="link3_joint" parent="link-3" child="link-4" pos_z="0.22" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+
+<!-- Pallet_Joint FIXED-->
+<xacro:fixed_joint name="pallet_joint" parent="pallet" child="link-1" pos_x = "0.234" pos_y = "0.330" pos_z="0.487"/>
+
+</robot>

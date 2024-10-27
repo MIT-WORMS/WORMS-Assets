@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+<!-- ================== -->
+<!--     LINK MACROS    -->
+<!-- ================== -->
+
+<xacro:macro name="link-1" params="name roll">
+    <link name="${name}">
+        <visual>
+            <origin xyz="0 0 0" rpy="${roll} 0 0"/>
+            <geometry>
+                <mesh filename="../Meshes/link-1.gltf"/>
+            </geometry>
+        </visual>
+    </link>
+</xacro:macro>
+
+<xacro:macro name="link-2" params="name pos_x roll">
+    <link name="${name}">
+        <visual>
+            <origin xyz="${pos_x} 0.0" rpy="${roll} 0 0"/>
+            <geometry>
+                <mesh filename="../Meshes/link-2.gltf"/>
+            </geometry>
+        </visual>
+    </link>
+</xacro:macro>
+
+<xacro:macro name="link-3" params="name pos_y roll pitch yaw">
+    <link name="${name}">
+        <visual>
+            <origin xyz="0.0 ${pos_y} 0.0 " rpy="${roll} ${pitch} 0"/>
+            <geometry>
+                <mesh filename="../Meshes/link-3.gltf"/>
+            </geometry>
+        </visual>
+    </link>
+</xacro:macro>
+
+<xacro:macro name="link-4" params="name pos_y roll yaw">
+<link name="${name}">
+    <visual>
+        <origin xyz="0 ${pos_y} 0 " rpy="${roll} 0 ${yaw}"/>
+        <geometry>
+            <mesh filename="../Meshes/link-4.gltf"/>
+        </geometry>
+    </visual>
+</link>
+</xacro:macro>
+
+<xacro:macro name="pallet" params="name pos_z roll">
+<link name="${name}">
+    <visual>
+        <origin xyz="0 0 ${pos_z}" rpy="${roll} 0 0"/>
+        <geometry>
+            <mesh filename="../Meshes/pallet.gltf"/>
+        </geometry>
+    </visual>
+</link>
+</xacro:macro>
+
+<!-- ================== -->
+<!--     JOINT MACROS   -->
+<!-- ================== -->
+
+<xacro:macro name="fixed_joint" params="name parent child pos_x pos_y pos_z">
+<joint name="${name}" type="fixed">
+    <parent link="${parent}"/>
+    <child link="${child}"/>
+    <origin rpy="0 1.57 0" xyz="${pos_x} ${pos_y} ${pos_z}"/>
+    </joint>
+</xacro:macro>
+
+<xacro:macro name="revolute_joint" params="name parent child axis pos_z lower upper effort velocity">
+<joint name="${name}" type="revolute">
+    <parent link="${parent}"/>
+    <child link="${child}"/>
+
+    <xacro:if value="${axis == 'x'}">
+        <axis xyz="1 0 0"/>
+    </xacro:if>
+    <xacro:if value="${axis == 'y'}">
+        <axis xyz="0 1 0"/>
+    </xacro:if>
+    <xacro:if value="${axis == 'z'}">
+        <axis xyz="0 0 1"/>
+    </xacro:if>
+
+    <origin rpy="0 0 0" xyz="0 0 ${pos_z}"/>
+    <limit effort="${effort}" lower="${lower}" upper="${upper}" velocity="${velocity}"/>
+    <dynamics damping="1"/>
+</joint>
+</xacro:macro>
+    
+</robot>
