@@ -1,29 +1,69 @@
 <robot name="3DOF-WORM">
     <link name="link-1">
+        <inertial>
+            <origin xyz="0 0 0.0725" rpy="0 0 0"/>
+            <mass value="3.5"/>
+            <inertia ixx="0.023" ixy="0" ixz="0" iyy="0.023" iyz="0" izz="0.025"/>
+        </inertial>
+
         <visual>
-            <origin xyz="0 0 0" rpy="-1.57 0 0"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="../Meshes/link-1.gltf"/>
+                <mesh filename="../Meshes/link-1.obj"/>
             </geometry>
         </visual>
+
+        <collision name="link-1-base-collision">
+            <origin xyz="0 0 0.035" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.11" radius="0.075"/>
+            </geometry>
+        </collision>
+
+        <collision name="link-1-motor-collision">
+            <origin xyz="-0.008 0 0.145" rpy="0 1.57 0"/>
+            <geometry>
+                <cylinder length="0.075" radius="0.06"/>
+            </geometry>
+        </collision>
     </link>
 
     <joint name="joint-1" type="revolute">
         <parent link="link-1"/>
         <child link="link-2"/>
-        <origin xyz="0 0 0.1004" rpy="0 0 0" />
+        <origin xyz="0 0 0.145" rpy="0 0 0" />
         <axis xyz="1 0 0" />
         <limit lower="-1.57" upper="1.57" effort="120" velocity="5.02654824"/>
-        <dynamics damping="1"/>
+        <dynamics damping="0.8487"/>
     </joint>
 
     <link name="link-2">
+        <inertial>
+            <origin xyz="0 0 0.1275" rpy="0 0 0"/>
+            <mass value="3.5"/>
+            <inertia ixx="0.025" ixy="0" ixz="0" iyy="0.025" iyz="0" izz="0.009"/>
+        </inertial>
+
         <visual>
-            <origin xyz="-0.009 0 0" rpy="-1.57 0 0"/>
+            <origin xyz="-0.009 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="../Meshes/link-2.gltf"/>
+                <mesh filename="../Meshes/link-2.obj"/>
             </geometry>
         </visual>
+
+        <collision name="link-2-base-collision">
+            <origin xyz="-0.01 0 0.085" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.1 0.08 0.22"/>
+            </geometry>
+        </collision>
+
+        <collision name="link-2-motor-collision">
+            <origin xyz="0 -0.008 0.255" rpy="1.57 0 0"/>
+            <geometry>
+                <cylinder length="0.075" radius="0.06"/>
+            </geometry>
+        </collision>
     </link>
 
     <joint name="joint-2" type="revolute">
@@ -32,16 +72,36 @@
         <origin xyz="0 0 0.255" rpy="0 0 0" />
         <axis xyz="0 1 0" />
         <limit lower="-2.094" upper="2.094" effort="120" velocity="5.02654824"/>
-        <dynamics damping="1"/>
+        <dynamics damping="0.8487"/>
     </joint>
 
     <link name="link-3">
+        <inertial>
+            <origin xyz="0 0 0.11" rpy="0 0 0"/>
+            <mass value="3.5"/>
+            <inertia ixx="0.020" ixy="0" ixz="0" iyy="0.020" iyz="0" izz="0.009"/>
+        </inertial>
+
         <visual>
-            <origin xyz="0 -0.007 0" rpy="1.57 3.14 0"/>
+            <origin xyz="0 -0.007 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="../Meshes/link-3.gltf"/>
+                <mesh filename="../Meshes/link-3.obj"/>
             </geometry>
         </visual>
+
+        <collision name="link-3-base-collision">
+            <origin xyz="0 -0.01 0.07" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.08 0.1 0.18"/>
+            </geometry>
+        </collision>
+
+        <collision name="link-3-motor-collision">
+            <origin xyz="0 0.01 0.22" rpy="1.57 0 0"/>
+            <geometry>
+                <cylinder length="0.075" radius="0.06"/>
+            </geometry>
+        </collision>
     </link>
 
     <joint name="joint-3" type="revolute">
@@ -50,15 +110,35 @@
         <origin xyz="0 0 0.22" rpy="0 0 0"/>
         <axis xyz="0 1 0" />
         <limit lower="-2.094" upper="2.094" effort="120" velocity="5.02654824"/>
-        <dynamics damping="1"/>
+        <dynamics damping="0.8487"/>
     </joint>
 
     <link name="link-4">
+        <inertial>
+            <origin xyz="0 0.015 0.2425" rpy="0 0 0"/>
+            <mass value="11"/>
+            <inertia ixx="0.236" ixy="0" ixz="0" iyy="0.226" iyz="0" izz="0.031"/>
+        </inertial>
+
         <visual>
-            <origin xyz="0 0.015 0" rpy="-1.57 0 -1.57"/>
+            <origin xyz="0 0.015 0" rpy="0 0 -1.57"/>
             <geometry>
-                <mesh filename="../Meshes/link-4.gltf"/>
+                <mesh filename="../Meshes/link-4.obj"/>
             </geometry>
         </visual>
+
+        <collision name="link-3-base-collision">
+            <origin xyz="0 0.015 0.2" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.11 0.15 0.45"/>
+            </geometry>
+        </collision>
+
+        <collision name="link-1-uib-collision">
+            <origin xyz="0 0.015 0.46" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.075"/>
+            </geometry>
+        </collision>
     </link>
 </robot>
