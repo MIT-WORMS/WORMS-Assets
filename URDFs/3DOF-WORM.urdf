@@ -2,8 +2,8 @@
     <link name="link-1">
         <inertial>
             <origin xyz="0 0 0.0725" rpy="0 0 0"/>
-            <mass value="3.5"/>
-            <inertia ixx="0.023" ixy="0" ixz="0" iyy="0.023" iyz="0" izz="0.025"/>
+            <mass value="1.59"/>
+            <inertia ixx="0.010" ixy="0" ixz="0" iyy="0.010" iyz="0" izz="0.011"/>
         </inertial>
 
         <visual>
@@ -40,8 +40,8 @@
     <link name="link-2">
         <inertial>
             <origin xyz="0 0 0.1275" rpy="0 0 0"/>
-            <mass value="3.5"/>
-            <inertia ixx="0.025" ixy="0" ixz="0" iyy="0.025" iyz="0" izz="0.009"/>
+            <mass value="1.59"/>
+            <inertia ixx="0.011" ixy="0" ixz="0" iyy="0.011" iyz="0" izz="0.004"/>
         </inertial>
 
         <visual>
@@ -78,8 +78,8 @@
     <link name="link-3">
         <inertial>
             <origin xyz="0 0 0.11" rpy="0 0 0"/>
-            <mass value="3.5"/>
-            <inertia ixx="0.020" ixy="0" ixz="0" iyy="0.020" iyz="0" izz="0.009"/>
+            <mass value="1.59"/>
+            <inertia ixx="0.009" ixy="0" ixz="0" iyy="0.009" iyz="0" izz="0.004"/>
         </inertial>
 
         <visual>
@@ -116,8 +116,8 @@
     <link name="link-4">
         <inertial>
             <origin xyz="0 0.015 0.2425" rpy="0 0 0"/>
-            <mass value="11"/>
-            <inertia ixx="0.236" ixy="0" ixz="0" iyy="0.226" iyz="0" izz="0.031"/>
+            <mass value="5.00"/>
+            <inertia ixx="0.107" ixy="0" ixz="0" iyy="0.103" iyz="0" izz="0.014"/>
         </inertial>
 
         <visual>
