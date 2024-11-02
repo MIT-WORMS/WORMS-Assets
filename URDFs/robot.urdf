@@ -14,11 +14,22 @@
   <!-- ================================= -->
   <!-- |  INERTIAL PROPERTIES - LINKS  | -->
   <!-- ================================= -->
+
+    <!-- New link for moon terrain -->
+  <link name="moon_terrain">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/> <!-- Adjust position as needed -->
+      <geometry>
+        <mesh filename="../Meshes/3d-model.obj"/>
+      </geometry>
+    </visual>
+  </link>
+
   <link name="link-1">
     <visual>
       <origin rpy="-1.57 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="../Meshes/link-1.gltf"/>
+        <mesh filename="../Meshes/link-1.obj"/>
       </geometry>
     </visual>
   </link>
@@ -26,7 +37,7 @@
     <visual>
       <origin rpy="-1.57 0 0" xyz="-0.009 0 0"/>
       <geometry>
-        <mesh filename="../Meshes/link-2.gltf"/>
+        <mesh filename="../Meshes/link-2.obj"/>
       </geometry>
     </visual>
   </link>
@@ -34,7 +45,7 @@
     <visual>
       <origin rpy="1.57 3.14 0" xyz="0.0 -0.007 0.0 "/>
       <geometry>
-        <mesh filename="../Meshes/link-3.gltf"/>
+        <mesh filename="../Meshes/link-3.obj"/>
       </geometry>
     </visual>
   </link>
@@ -42,7 +53,7 @@
     <visual>
       <origin rpy="-1.57 0 -1.57" xyz="0 0.015 0 "/>
       <geometry>
-        <mesh filename="../Meshes/link-4.gltf"/>
+        <mesh filename="../Meshes/link-4.obj"/>
       </geometry>
     </visual>
   </link>
@@ -54,9 +65,18 @@
       </geometry>
     </visual>
   </link>
+
   <!-- ================================= -->
   <!-- | KINEMATIC PROPERTIES - JOINTS | -->
   <!-- ================================= -->
+
+  <!-- Add a joint to fix the terrain to the world (optional) -->
+  <joint name="moon_terrain_joint" type="fixed">
+    <parent link="world"/>
+    <child link="moon_terrain"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  
   <joint name="link1_joint" type="revolute">
     <parent link="link-1"/>
     <child link="link-2"/>
