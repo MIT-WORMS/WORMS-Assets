@@ -7,9 +7,9 @@
         </inertial>
 
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 0" rpy="-1.57 0 0"/>
             <geometry>
-                <mesh filename="../Meshes/link-1.obj"/>
+                <mesh filename="../Meshes/link-1.gltf"/>
             </geometry>
         </visual>
 
@@ -45,9 +45,9 @@
         </inertial>
 
         <visual>
-            <origin xyz="-0.009 0 0" rpy="0 0 0"/>
+            <origin xyz="-0.009 0 0" rpy="-1.57 0 0"/>
             <geometry>
-                <mesh filename="../Meshes/link-2.obj"/>
+                <mesh filename="../Meshes/link-2.gltf"/>
             </geometry>
         </visual>
 
@@ -83,9 +83,9 @@
         </inertial>
 
         <visual>
-            <origin xyz="0 -0.007 0" rpy="0 0 0"/>
+            <origin xyz="0 -0.007 0" rpy="-1.57 0 0"/>
             <geometry>
-                <mesh filename="../Meshes/link-3.obj"/>
+                <mesh filename="../Meshes/link-3.gltf"/>
             </geometry>
         </visual>
 
@@ -121,9 +121,9 @@
         </inertial>
 
         <visual>
-            <origin xyz="0 0.015 0" rpy="0 0 -1.57"/>
+            <origin xyz="0 0.015 0" rpy="-1.57 0 -1.57"/>
             <geometry>
-                <mesh filename="../Meshes/link-4.obj"/>
+                <mesh filename="../Meshes/link-4.gltf"/>
             </geometry>
         </visual>
 
