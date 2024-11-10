@@ -141,4 +141,47 @@
             </geometry>
         </collision>
     </link>
+
+    <!-- Transmission definitions -->
+    <transmission name="tran-1">
+        <robotNamespace>/3DOF-WORM</robotNamespace>
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint-1">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor-1">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+            <drake:gear_ratio value="64.0" />
+            <drake:rotor_inertia value="0.00005645" />
+        </actuator>
+    </transmission>
+
+    <transmission name="tran-2">
+        <robotNamespace>/3DOF-WORM</robotNamespace>
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint-2">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor-2">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+            <drake:gear_ratio value="64.0" />
+            <drake:rotor_inertia value="0.00005645" />
+        </actuator>
+    </transmission>
+
+    <transmission name="tran-3">
+        <robotNamespace>/3DOF-WORM</robotNamespace>
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint-3">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor-3">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+            <drake:gear_ratio value="64.0" />
+            <drake:rotor_inertia value="0.00005645" />
+        </actuator>
+    </transmission>
 </robot>
