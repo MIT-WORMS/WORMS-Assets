@@ -1,47 +1,253 @@
 <?xml version="1.0"?>
 <robot name="rrr_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<!-- Include xacro files
-<!-- <xacro:include filename="common_properties.xacro" /> -->
-<xacro:include filename="robot_macro.xacro" /> 
-
-<!-- Properties -->
-
+<!-- Include xacro files -->
+<xacro:include filename="robot.macro.xacro" />
 
 <!-- ================================= -->
 <!-- |  INERTIAL PROPERTIES - LINKS  | -->
 <!-- ================================= -->
 
-<!-- Link 1 -->
-<xacro:link-1 name="link-1" roll="-1.57"/>
+<!-- Moon Terrain -->
 
-<!-- Link 2 -->
-<xacro:link-2 name="link-2" pos_x="-0.009" roll="-1.57"/> 
-
-<!-- Link 3 -->
-<xacro:link-3 name="link-3" pos_y="-0.007" roll="1.57" pitch="3.14" />
-
-<!-- Link 4 -->
-<xacro:link-4 name="link-4" pos_y="0.015" roll="-1.57" yaw="-1.57"/> 
+<xacro:moon_terrain/>
 
 <!-- Pallet -->
-<xacro:pallet name="pallet" pos_z="0.522" roll="-1.57"/> 
+<xacro:pallet name="pallet" pos_z="0.522" roll="-1.57"/>
+
+<!-- Arm 1 -->
+
+<!-- Link 1 -->
+<xacro:link-1 name="link-1.1" roll="-1.57" inertial_z="0.0725" mass="1.59" ixx="0.010" iyy=
+"0.010" izz = "0.011" base_z = "0.035" base_length = "0.11" base_radius = "0.075" motor_x = "-0.008" motor_z = "0.145" motor_pitch = "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 2 -->
+<xacro:link-2 name="link-1.2" pos_x="-0.009" roll="-1.57" inertial_z = "0.1275" mass = "1.59" ixx = "0.011" iyy = "0.011" izz = "0.004" base_x = "-0.01" base_z = "0.085" box_x = "0.1" box_y = "0.08" box_z = "0.22" motor_y = "-0.008" motor_z = "0.255" motor_roll= "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 3 -->
+<xacro:link-3 name="link-1.3" pos_y="-0.007" roll="-1.57" pitch="0" inertial_z = "0.11" mass = "1.59" ixx = "0.009" iyy = "0.009" izz = "0.004" base_y = "-0.01" base_z = "0.07" box_x = "0.08" box_y = "0.1" box_z = "0.18" motor_y = "0.01" motor_z = "0.22" motor_roll = "1.57" motor_length = "0.075" motor_radius = "0.06"  />
+
+<!-- Link 4 -->
+<xacro:link-4 name="link-1.4" pos_y="0.015" roll="-1.57" yaw="-1.57" inertial_y = "0.015" inertial_z = "0.2425" mass = "5.00" ixx = "0.107" iyy = "0.103" izz = "0.014" base_y = "0.015" base_z = "0.2" box_x = "0.11" box_y = "0.15" box_z = "0.45" uib_y = "0.015" uib_z = "0.46" uib_length = "0.08" uib_radius = "0.075" />
+
+<!-- Arm 2 -->
+
+
+<!-- Link 1 -->
+<xacro:link-1 name="link-2.1" roll="-1.57" inertial_z="0.0725" mass="1.59" ixx="0.010" iyy=
+"0.010" izz = "0.011" base_z = "0.035" base_length = "0.11" base_radius = "0.075" motor_x = "-0.008" motor_z = "0.145" motor_pitch = "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 2 -->
+<xacro:link-2 name="link-2.2" pos_x="-0.009" roll="-1.57" inertial_z = "0.1275" mass = "1.59" ixx = "0.011" iyy = "0.011" izz = "0.004" base_x = "-0.01" base_z = "0.085" box_x = "0.1" box_y = "0.08" box_z = "0.22" motor_y = "-0.008" motor_z = "0.255" motor_roll= "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 3 -->
+<xacro:link-3 name="link-2.3" pos_y="-0.007" roll="-1.57" pitch="0" inertial_z = "0.11" mass = "1.59" ixx = "0.009" iyy = "0.009" izz = "0.004" base_y = "-0.01" base_z = "0.07" box_x = "0.08" box_y = "0.1" box_z = "0.18" motor_y = "0.01" motor_z = "0.22" motor_roll = "1.57" motor_length = "0.075" motor_radius = "0.06"  />
+
+<!-- Link 4 -->
+<xacro:link-4 name="link-2.4" pos_y="0.015" roll="-1.57" yaw="-1.57" inertial_y = "0.015" inertial_z = "0.2425" mass = "5.00" ixx = "0.107" iyy = "0.103" izz = "0.014" base_y = "0.015" base_z = "0.2" box_x = "0.11" box_y = "0.15" box_z = "0.45" uib_y = "0.015" uib_z = "0.46" uib_length = "0.08" uib_radius = "0.075" />
+
+
+<!-- Arm 3 -->
+
+
+<!-- Link 1 -->
+<xacro:link-1 name="link-3.1" roll="-1.57" inertial_z="0.0725" mass="1.59" ixx="0.010" iyy=
+"0.010" izz = "0.011" base_z = "0.035" base_length = "0.11" base_radius = "0.075" motor_x = "-0.008" motor_z = "0.145" motor_pitch = "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 2 -->
+<xacro:link-2 name="link-3.2" pos_x="-0.009" roll="-1.57" inertial_z = "0.1275" mass = "1.59" ixx = "0.011" iyy = "0.011" izz = "0.004" base_x = "-0.01" base_z = "0.085" box_x = "0.1" box_y = "0.08" box_z = "0.22" motor_y = "-0.008" motor_z = "0.255" motor_roll= "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 3 -->
+<xacro:link-3 name="link-3.3" pos_y="-0.007" roll="-1.57" pitch="0" inertial_z = "0.11" mass = "1.59" ixx = "0.009" iyy = "0.009" izz = "0.004" base_y = "-0.01" base_z = "0.07" box_x = "0.08" box_y = "0.1" box_z = "0.18" motor_y = "0.01" motor_z = "0.22" motor_roll = "1.57" motor_length = "0.075" motor_radius = "0.06"  />
+
+<!-- Link 4 -->
+<xacro:link-4 name="link-3.4" pos_y="0.015" roll="-1.57" yaw="-1.57" inertial_y = "0.015" inertial_z = "0.2425" mass = "5.00" ixx = "0.107" iyy = "0.103" izz = "0.014" base_y = "0.015" base_z = "0.2" box_x = "0.11" box_y = "0.15" box_z = "0.45" uib_y = "0.015" uib_z = "0.46" uib_length = "0.08" uib_radius = "0.075" />
+
+
+<!-- Arm 4 -->
+
+
+<!-- Link 1 -->
+<xacro:link-1 name="link-4.1" roll="-1.57" inertial_z="0.0725" mass="1.59" ixx="0.010" iyy=
+"0.010" izz = "0.011" base_z = "0.035" base_length = "0.11" base_radius = "0.075" motor_x = "-0.008" motor_z = "0.145" motor_pitch = "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 2 -->
+<xacro:link-2 name="link-4.2" pos_x="-0.009" roll="-1.57" inertial_z = "0.1275" mass = "1.59" ixx = "0.011" iyy = "0.011" izz = "0.004" base_x = "-0.01" base_z = "0.085" box_x = "0.1" box_y = "0.08" box_z = "0.22" motor_y = "-0.008" motor_z = "0.255" motor_roll= "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 3 -->
+<xacro:link-3 name="link-4.3" pos_y="-0.007" roll="-1.57" pitch="0" inertial_z = "0.11" mass = "1.59" ixx = "0.009" iyy = "0.009" izz = "0.004" base_y = "-0.01" base_z = "0.07" box_x = "0.08" box_y = "0.1" box_z = "0.18" motor_y = "0.01" motor_z = "0.22" motor_roll = "1.57" motor_length = "0.075" motor_radius = "0.06"  />
+
+<!-- Link 4 -->
+<xacro:link-4 name="link-4.4" pos_y="0.015" roll="-1.57" yaw="-1.57" inertial_y = "0.015" inertial_z = "0.2425" mass = "5.00" ixx = "0.107" iyy = "0.103" izz = "0.014" base_y = "0.015" base_z = "0.2" box_x = "0.11" box_y = "0.15" box_z = "0.45" uib_y = "0.015" uib_z = "0.46" uib_length = "0.08" uib_radius = "0.075" />
+
+
+<!-- Arm 5 -->
+
+
+<!-- Link 1 -->
+<xacro:link-1 name="link-5.1" roll="-1.57" inertial_z="0.0725" mass="1.59" ixx="0.010" iyy=
+"0.010" izz = "0.011" base_z = "0.035" base_length = "0.11" base_radius = "0.075" motor_x = "-0.008" motor_z = "0.145" motor_pitch = "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 2 -->
+<xacro:link-2 name="link-5.2" pos_x="-0.009" roll="-1.57" inertial_z = "0.1275" mass = "1.59" ixx = "0.011" iyy = "0.011" izz = "0.004" base_x = "-0.01" base_z = "0.085" box_x = "0.1" box_y = "0.08" box_z = "0.22" motor_y = "-0.008" motor_z = "0.255" motor_roll= "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 3 -->
+<xacro:link-3 name="link-5.3" pos_y="-0.007" roll="-1.57" pitch="0" inertial_z = "0.11" mass = "1.59" ixx = "0.009" iyy = "0.009" izz = "0.004" base_y = "-0.01" base_z = "0.07" box_x = "0.08" box_y = "0.1" box_z = "0.18" motor_y = "0.01" motor_z = "0.22" motor_roll = "1.57" motor_length = "0.075" motor_radius = "0.06"  />
+
+<!-- Link 4 -->
+<xacro:link-4 name="link-5.4" pos_y="0.015" roll="-1.57" yaw="-1.57" inertial_y = "0.015" inertial_z = "0.2425" mass = "5.00" ixx = "0.107" iyy = "0.103" izz = "0.014" base_y = "0.015" base_z = "0.2" box_x = "0.11" box_y = "0.15" box_z = "0.45" uib_y = "0.015" uib_z = "0.46" uib_length = "0.08" uib_radius = "0.075" />
+
+
+<!-- Arm 6 -->
+
+
+<!-- Link 1 -->
+<xacro:link-1 name="link-6.1" roll="-1.57" inertial_z="0.0725" mass="1.59" ixx="0.010" iyy="0.010" izz = "0.011" base_z = "0.035" base_length = "0.11" base_radius = "0.075" motor_x = "-0.008" motor_z = "0.145" motor_pitch = "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 2 -->
+<xacro:link-2 name="link-6.2" pos_x="-0.009" roll="-1.57" inertial_z = "0.1275" mass = "1.59" ixx = "0.011" iyy = "0.011" izz = "0.004" base_x = "-0.01" base_z = "0.085" box_x = "0.1" box_y = "0.08" box_z = "0.22" motor_y = "-0.008" motor_z = "0.255" motor_roll= "1.57" motor_length = "0.075" motor_radius = "0.06" />
+
+<!-- Link 3 -->
+<xacro:link-3 name="link-6.3" pos_y="-0.007" roll="-1.57" pitch="0" inertial_z = "0.11" mass = "1.59" ixx = "0.009" iyy = "0.009" izz = "0.004" base_y = "-0.01" base_z = "0.07" box_x = "0.08" box_y = "0.1" box_z = "0.18" motor_y = "0.01" motor_z = "0.22" motor_roll = "1.57" motor_length = "0.075" motor_radius = "0.06"  />
+
+<!-- Link 4 -->
+<xacro:link-4 name="link-6.4" pos_y="0.015" roll="-1.57" yaw="-1.57" inertial_y = "0.015" inertial_z = "0.2425" mass = "5.00" ixx = "0.107" iyy = "0.103" izz = "0.014" base_y = "0.015" base_z = "0.2" box_x = "0.11" box_y = "0.15" box_z = "0.45" uib_y = "0.015" uib_z = "0.46" uib_length = "0.08" uib_radius = "0.075" />
+
 
 
 <!-- ================================= -->
 <!-- | KINEMATIC PROPERTIES - JOINTS | -->
 <!-- ================================= -->
 
+<!-- Pallet to Moon -->
+<xacro:fixed_joint name="pallet-moon" parent="moon_terrain" child="pallet" pos_x = "0" pos_y = "0" pos_z="0" roll = "0" pitch = "0"/>
+
+<!-- Arm 1 -->
+
 <!-- Link1_Joint REVOLUTE-->
-<xacro:revolute_joint name="link1_joint" parent="link-1" child="link-2" axis="x"  pos_z="0.1004" lower = "-1.57" upper = "1.57" effort = "120" velocity = "5.02654824" /> 
+<xacro:revolute_joint name="joint-1.1" parent="link-1.1" child="link-1.2" axis="x"  pos_z="0.145" lower = "-1.57" upper = "1.57" effort = "120" velocity = "5.02654824" />
 
 <!-- Link2_Joint REVOLUTE-->
-<xacro:revolute_joint name="link2_joint" parent="link-2" child="link-3" axis="y" pos_z="0.255" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/> 
+<xacro:revolute_joint name="joint-1.2" parent="link-1.2" child="link-1.3" axis="y" pos_z="0.255" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
 
 <!-- Link3_Joint REVOLUTE-->
-<xacro:revolute_joint name="link3_joint" parent="link-3" child="link-4" pos_z="0.22" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+<xacro:revolute_joint name="joint-1.3" parent="link-1.3" child="link-1.4" axis="y" pos_z="0.22" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
 
 <!-- Pallet_Joint FIXED-->
-<xacro:fixed_joint name="pallet_joint" parent="pallet" child="link-1" pos_x = "0.234" pos_y = "0.330" pos_z="0.487"/>
+<xacro:fixed_joint name="pallet-joint1" parent="pallet" child="link-1.1" pos_x = "0.17" pos_y = "0.330" pos_z="0.487" roll = "0" pitch = "1.57"/>
+
+<!-- Arm 2 -->
+
+<!-- Link1_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-2.1" parent="link-2.1" child="link-2.2" axis="x"  pos_z="0.145" lower = "-1.57" upper = "1.57" effort = "120" velocity = "5.02654824" />
+
+<!-- Link2_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-2.2" parent="link-2.2" child="link-2.3" axis="y" pos_z="0.255" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+
+<!-- Link3_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-2.3" parent="link-2.3" child="link-2.4" axis="y" pos_z="0.22" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+
+<!-- Pallet_Joint FIXED-->
+<xacro:fixed_joint name="pallet-joint2" parent="pallet" child="link-2.1" pos_x = "0.17" pos_y = "-0.330" pos_z="0.487" roll = "0" pitch = "1.57"/>
+
+
+<!-- Arm 3 -->
+
+<!-- Link1_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-3.1" parent="link-3.1" child="link-3.2" axis="x"  pos_z="0.145" lower = "-1.57" upper = "1.57" effort = "120" velocity = "5.02654824" />
+
+<!-- Link2_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-3.2" parent="link-3.2" child="link-3.3" axis="y" pos_z="0.255" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+
+<!-- Link3_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-3.3" parent="link-3.3" child="link-3.4" axis="y" pos_z="0.22" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+
+<!-- Pallet_Joint FIXED-->
+<xacro:fixed_joint name="pallet-joint3" parent="pallet" child="link-3.1" pos_x = "-0.17" pos_y = "-0.330" pos_z="0.487" roll = "0" pitch = "-1.57" />
+
+
+<!-- Arm 4 -->
+
+<!-- Link1_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-4.1" parent="link-4.1" child="link-4.2" axis="x"  pos_z="0.145" lower = "-1.57" upper = "1.57" effort = "120" velocity = "5.02654824" />
+
+<!-- Link2_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-4.2" parent="link-4.2" child="link-4.3" axis="y" pos_z="0.255" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+
+<!-- Link3_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-4.3" parent="link-4.3" child="link-4.4" axis="y" pos_z="0.22" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+
+<!-- Pallet_Joint FIXED-->
+<xacro:fixed_joint name="pallet-joint4" parent="pallet" child="link-4.1" pos_x = "-0.17" pos_y = "0.330" pos_z="0.487" roll = "0" pitch = "-1.57"/>
+
+
+<!-- Arm 5 -->
+
+<!-- Link1_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-5.1" parent="link-5.1" child="link-5.2" axis="x"  pos_z="0.145" lower = "-1.57" upper = "1.57" effort = "120" velocity = "5.02654824" />
+
+<!-- Link2_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-5.2" parent="link-5.2" child="link-5.3" axis="y" pos_z="0.255" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+
+<!-- Link3_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-5.3" parent="link-5.3" child="link-5.4" axis="y" pos_z="0.22" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+
+<!-- Pallet_Joint FIXED-->
+<xacro:fixed_joint name="pallet-joint5" parent="pallet" child="link-5.1" pos_x = "0" pos_y = "0.360" pos_z="0.487" roll = "-1.57" pitch = "-1.57"/>
+
+
+<!-- Arm 6 -->
+
+<!-- Link1_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-6.1" parent="link-6.1" child="link-6.2" axis="x"  pos_z="0.145" lower = "-1.57" upper = "1.57" effort = "120" velocity = "5.02654824" />
+
+<!-- Link2_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-6.2" parent="link-6.2" child="link-6.3" axis="y" pos_z="0.255" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+
+<!-- Link3_Joint REVOLUTE-->
+<xacro:revolute_joint name="joint-6.3" parent="link-6.3" child="link-6.4" axis="y" pos_z="0.22" lower = "-2.094" upper = "2.094" effort = "120" velocity = "5.02654824"/>
+
+<!-- Pallet_Joint FIXED-->
+<xacro:fixed_joint name="pallet-joint6" parent="pallet" child="link-6.1" pos_x = "0" pos_y = "-0.360" pos_z="0.487" roll = "1.57" pitch = "1.57"/>
+
+
+<!-- ================================= -->
+<!-- | TRANSMISSIONS  | -->
+<!-- ================================= -->
+
+<!-- Use the macro to create transmissions for the joints and actuators -->
+
+<!-- Transmissions for Arm 1 -->
+<xacro:create_transmission transmission_name="tran-1.1" joint_name="joint-1.1" actuator_name="motor-1.1" />
+<xacro:create_transmission transmission_name="tran-1.2" joint_name="joint-1.2" actuator_name="motor-1.2" />
+<xacro:create_transmission transmission_name="tran-1.3" joint_name="joint-1.3" actuator_name="motor-1.3" />
+
+<!-- Transmissions for Arm 2 -->
+<xacro:create_transmission transmission_name="tran-2.1" joint_name="joint-2.1" actuator_name="motor-2.1" />
+<xacro:create_transmission transmission_name="tran-2.2" joint_name="joint-2.2" actuator_name="motor-2.2" />
+<xacro:create_transmission transmission_name="tran-2.3" joint_name="joint-2.3" actuator_name="motor-2.3" />
+
+<!-- Transmissions for Arm 3 -->
+<xacro:create_transmission transmission_name="tran-3.1" joint_name="joint-3.1" actuator_name="motor-3.1" />
+<xacro:create_transmission transmission_name="tran-3.2" joint_name="joint-3.2" actuator_name="motor-3.2" />
+<xacro:create_transmission transmission_name="tran-3.3" joint_name="joint-3.3" actuator_name="motor-3.3" />
+
+<!-- Transmissions for Arm 4 -->
+<xacro:create_transmission transmission_name="tran-4.1" joint_name="joint-4.1" actuator_name="motor-4.1" />
+<xacro:create_transmission transmission_name="tran-4.2" joint_name="joint-4.2" actuator_name="motor-4.2" />
+<xacro:create_transmission transmission_name="tran-4.3" joint_name="joint-4.3" actuator_name="motor-4.3" />
+
+
+<!-- Transmissions for Arm 5 -->
+<xacro:create_transmission transmission_name="tran-5.1" joint_name="joint-5.1" actuator_name="motor-5.1" />
+<xacro:create_transmission transmission_name="tran-5.2" joint_name="joint-5.2" actuator_name="motor-5.2" />
+<xacro:create_transmission transmission_name="tran-5.3" joint_name="joint-5.3" actuator_name="motor-5.3" />
+
+
+<!-- Transmissions for Arm 6 -->
+<xacro:create_transmission transmission_name="tran-6.1" joint_name="joint-6.1" actuator_name="motor-6.1" />
+<xacro:create_transmission transmission_name="tran-6.2" joint_name="joint-6.2" actuator_name="motor-6.2" />
+<xacro:create_transmission transmission_name="tran-6.3" joint_name="joint-6.3" actuator_name="motor-6.3" />
+
 
 </robot>

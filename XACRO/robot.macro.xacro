@@ -1,96 +1,201 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    
+<robot xmlns:drake="http://drake.mit.edu" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
 <!-- ================== -->
 <!--     LINK MACROS    -->
 <!-- ================== -->
 
-<xacro:macro name="link-1" params="name roll">
+<xacro:macro name="moon_terrain">
+    <link name="moon_terrain">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="../Meshes/3d-model.obj"/>
+            </geometry>
+        </visual>
+    </link>
+</xacro:macro>
+
+<xacro:macro name="link-1" params="name roll inertial_z mass ixx iyy izz base_z base_length base_radius motor_x motor_z motor_pitch motor_length motor_radius ">
     <link name="${name}">
+        <inertial>
+            <origin xyz="0 0 ${inertial_z}" rpy="0 0 0"/>
+            <mass value="${mass}"/>
+            <inertia ixx="${ixx}" ixy="0" ixz="0" iyy="${iyy}" iyz="0" izz="${izz}"/>
+        </inertial>
         <visual>
             <origin xyz="0 0 0" rpy="${roll} 0 0"/>
             <geometry>
                 <mesh filename="../Meshes/link-1.gltf"/>
             </geometry>
         </visual>
+        <collision name="link-1-base-collision">
+            <origin xyz="0 0 ${base_z}" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="${base_length}" radius="${base_radius}"/>
+            </geometry>
+        </collision>
+        <collision name="link-1-motor-collision">
+            <origin xyz="${motor_x} 0 ${motor_z}" rpy="0 ${motor_pitch} 0"/>
+            <geometry>
+            <cylinder length="${motor_length}" radius="${motor_radius}"/>
+        </geometry>
+    </collision>
     </link>
 </xacro:macro>
 
-<xacro:macro name="link-2" params="name pos_x roll">
+<xacro:macro name="link-2" params="name pos_x roll inertial_z mass ixx iyy izz base_x base_z box_x box_y box_z motor_y motor_z motor_roll motor_length motor_radius ">
     <link name="${name}">
+        <inertial>
+            <origin xyz="0 0 ${inertial_z}" rpy="0 0 0"/>
+            <mass value="${mass}"/>
+            <inertia ixx="${ixx}" ixy="0" ixz="0" iyy="${iyy}" iyz="0" izz="${izz}"/>
+        </inertial>
+
         <visual>
-            <origin xyz="${pos_x} 0.0" rpy="${roll} 0 0"/>
+            <origin xyz="${pos_x} 0 0" rpy="${roll} 0 0"/>
             <geometry>
                 <mesh filename="../Meshes/link-2.gltf"/>
             </geometry>
         </visual>
+
+        <collision name="link-2-base-collision">
+            <origin xyz="${base_x} 0 ${base_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${box_x} ${box_y} ${box_z}"/>
+            </geometry>
+        </collision>
+
+        <collision name="link-2-motor-collision">
+            <origin xyz="0 ${motor_y} ${motor_z}" rpy="${motor_roll} 0 0"/>
+            <geometry>
+                <cylinder length="${motor_length}" radius="${motor_radius}"/>
+            </geometry>
+        </collision>
     </link>
 </xacro:macro>
 
-<xacro:macro name="link-3" params="name pos_y roll pitch yaw">
+<xacro:macro name="link-3" params="name pos_y roll pitch mass inertial_z ixx iyy izz base_y base_z box_x box_y box_z motor_y motor_z motor_roll motor_length motor_radius">
     <link name="${name}">
+        <inertial>
+            <origin xyz="0 0 ${inertial_z}" rpy="0 0 0"/>
+            <mass value="${mass}"/>
+            <inertia ixx="${ixx}" ixy="0" ixz="0" iyy="${iyy}" iyz="0" izz="${izz}"/>
+        </inertial>
+
         <visual>
             <origin xyz="0.0 ${pos_y} 0.0 " rpy="${roll} ${pitch} 0"/>
             <geometry>
                 <mesh filename="../Meshes/link-3.gltf"/>
             </geometry>
         </visual>
+
+        <collision name="link-3-base-collision">
+            <origin xyz="0 ${base_y} ${base_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${box_x} ${box_y} ${box_z}"/>
+            </geometry>
+        </collision>
+
+        <collision name="link-3-motor-collision">
+            <origin xyz="0 ${motor_y} ${motor_z}" rpy="${motor_roll} 0 0"/>
+            <geometry>
+                <cylinder length="${motor_length}" radius="${motor_radius}"/>
+            </geometry>
+        </collision>
     </link>
 </xacro:macro>
 
-<xacro:macro name="link-4" params="name pos_y roll yaw">
-<link name="${name}">
-    <visual>
-        <origin xyz="0 ${pos_y} 0 " rpy="${roll} 0 ${yaw}"/>
-        <geometry>
-            <mesh filename="../Meshes/link-4.gltf"/>
-        </geometry>
-    </visual>
-</link>
+<xacro:macro name="link-4" params="name pos_y roll yaw inertial_y inertial_z mass ixx iyy izz base_y base_z box_x box_y box_z uib_y uib_z uib_length uib_radius">
+    <link name="${name}">
+        <inertial>
+            <origin xyz="0 ${inertial_y} ${inertial_z}" rpy="0 0 0"/>
+            <mass value="${mass}"/>
+            <inertia ixx="${ixx}" ixy="0" ixz="0" iyy="${iyy}" iyz="0" izz="${izz}"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0 ${pos_y} 0 " rpy="${roll} 0 ${yaw}"/>
+            <geometry>
+                <mesh filename="../Meshes/link-4.gltf"/>
+            </geometry>
+        </visual>
+
+        <collision name="link-3-base-collision">
+            <origin xyz="0 ${base_y} ${base_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${box_x} ${box_y} ${box_z}"/>
+            </geometry>
+        </collision>
+
+        <collision name="link-1-uib-collision">
+            <origin xyz="0 ${uib_y} ${uib_z}" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="${uib_length}" radius="${uib_radius}"/>
+            </geometry>
+        </collision>
+    </link>
 </xacro:macro>
 
 <xacro:macro name="pallet" params="name pos_z roll">
-<link name="${name}">
-    <visual>
-        <origin xyz="0 0 ${pos_z}" rpy="${roll} 0 0"/>
-        <geometry>
-            <mesh filename="../Meshes/pallet.gltf"/>
-        </geometry>
-    </visual>
-</link>
+    <link name="${name}">
+        <visual>
+            <origin xyz="0 0 ${pos_z}" rpy="${roll} 0 0"/>
+            <geometry>
+                <mesh filename="../Meshes/pallet.gltf"/>
+            </geometry>
+        </visual>
+    </link>
 </xacro:macro>
 
 <!-- ================== -->
 <!--     JOINT MACROS   -->
 <!-- ================== -->
 
-<xacro:macro name="fixed_joint" params="name parent child pos_x pos_y pos_z">
-<joint name="${name}" type="fixed">
-    <parent link="${parent}"/>
-    <child link="${child}"/>
-    <origin rpy="0 1.57 0" xyz="${pos_x} ${pos_y} ${pos_z}"/>
-    </joint>
+<xacro:macro name="fixed_joint" params="name parent child pos_x pos_y pos_z roll pitch">
+    <joint name="${name}" type="fixed">
+        <parent link="${parent}"/>
+        <child link="${child}"/>
+        <origin rpy="${roll} ${pitch} 0" xyz="${pos_x} ${pos_y} ${pos_z}"/>
+        </joint>
 </xacro:macro>
 
 <xacro:macro name="revolute_joint" params="name parent child axis pos_z lower upper effort velocity">
-<joint name="${name}" type="revolute">
-    <parent link="${parent}"/>
-    <child link="${child}"/>
+    <joint name="${name}" type="revolute">
+        <parent link="${parent}"/>
+        <child link="${child}"/>
 
-    <xacro:if value="${axis == 'x'}">
-        <axis xyz="1 0 0"/>
-    </xacro:if>
-    <xacro:if value="${axis == 'y'}">
-        <axis xyz="0 1 0"/>
-    </xacro:if>
-    <xacro:if value="${axis == 'z'}">
-        <axis xyz="0 0 1"/>
-    </xacro:if>
+        <xacro:if value="${axis == 'x'}">
+            <axis xyz="1 0 0"/>
+        </xacro:if>
+        <xacro:if value="${axis == 'y'}">
+            <axis xyz="0 1 0"/>
+        </xacro:if>
+        <xacro:if value="${axis == 'z'}">
+            <axis xyz="0 0 1"/>
+        </xacro:if>
 
-    <origin rpy="0 0 0" xyz="0 0 ${pos_z}"/>
-    <limit effort="${effort}" lower="${lower}" upper="${upper}" velocity="${velocity}"/>
-    <dynamics damping="1"/>
-</joint>
+        <origin rpy="0 0 0" xyz="0 0 ${pos_z}"/>
+        <limit effort="${effort}" lower="${lower}" upper="${upper}" velocity="${velocity}"/>
+        <dynamics damping="0.8487"/>
+    </joint>
 </xacro:macro>
-    
+
+<!-- Define a macro for transmissions -->
+<xacro:macro name="create_transmission" params="transmission_name joint_name actuator_name">
+    <transmission name="${transmission_name}">
+        <robotNamespace>/3DOF-WORM</robotNamespace>
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${joint_name}">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="${actuator_name}">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+            <drake:gear_ratio value="64.0" />
+            <drake:rotor_inertia value="0.00005645" />
+        </actuator>
+    </transmission>
+</xacro:macro>
+
 </robot>
