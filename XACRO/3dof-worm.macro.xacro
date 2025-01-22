@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<robot xmlns:drake="http://drake.mit.edu" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- Macro for an entire worm -->
+<xacro:macro name="worm" params="namespace base_link base_xyz base_rpy">
+
+    <!-- Local parameters -->
+    <xacro:property name="motor_collision_length" value="0.075"/>
+    <xacro:property name="motor_collision_radius" value="0.06"/>
+    <xacro:property name="motor_effort_limit" value="120"/>
+    <xacro:property name="motor_velocity_limit" value="5.02654824"/>
+    <xacro:property name="motor_damping" value="0.8487"/>
+    <xacro:property name="motor_gear_ratio" value="64"/>
+    <xacro:property name="motor_rotor_inertia" value="0.00005645"/>
+
+    <link name="${namespace}_base"/>
+
+    <joint name="${namespace}_joint_fixed_0" type="fixed">
+        <parent link="${base_link}"/>
+        <child link="${namespace}_link_0"/>
+        <origin xyz="${base_xyz}" rpy="${base_rpy}"/>
+    </joint>
+
+    <link name="${namespace}_link_0">
+        <inertial>
+            <origin xyz="0 0 0.0725" rpy="0 0 0"/>
+            <mass value="1.59"/>
+            <inertia ixx="0.010" ixy="0" ixz="0" iyy="0.010" iyz="0" izz="0.011"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0.045" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="../Meshes/link-0.gltf"/>
+            </geometry>
+        </visual>
+
+        <collision name="${namespace}_link_0_base_collision">
+            <origin xyz="0 0 0.035" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.11" radius="0.075"/>
+            </geometry>
+        </collision>
+
+        <collision name="${namespace}_link_0_motor_collision">
+            <origin xyz="0.008 0 0.145" rpy="0 1.57 0"/>
+            <geometry>
+                <cylinder length="${motor_collision_length}" radius="${motor_collision_radius}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="${namespace}_joint_0" type="revolute">
+        <parent link="${namespace}_link_0"/>
+        <child link="${namespace}_link_1"/>
+        <origin xyz="0 0 0.145" rpy="0 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.57" upper="1.57" effort="${motor_effort_limit}" velocity="${motor_velocity_limit}"/>
+        <dynamics damping="${motor_damping}"/>
+    </joint>
+
+    <link name="${namespace}_link_1">
+        <inertial>
+            <origin xyz="0 0 0.1275" rpy="0 0 0"/>
+            <mass value="1.59"/>
+            <inertia ixx="0.011" ixy="0" ixz="0" iyy="0.011" iyz="0" izz="0.004"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.05 0 0" rpy="0 0 -1.57"/>
+            <geometry>
+                <mesh filename="../Meshes/link-1.gltf"/>
+            </geometry>
+        </visual>
+
+        <collision name="${namespace}_link_1_base_collision">
+            <origin xyz="0.01 0 0.085" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.1 0.08 0.22"/>
+            </geometry>
+        </collision>
+
+        <collision name="${namespace}_link_1_motor_collision">
+            <origin xyz="0 0.008 0.255" rpy="1.57 0 0"/>
+            <geometry>
+                <cylinder length="${motor_collision_length}" radius="${motor_collision_radius}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="${namespace}_joint_1" type="revolute">
+        <parent link="${namespace}_link_1"/>
+        <child link="${namespace}_link_2"/>
+        <origin xyz="0 0 0.255" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit lower="-2.094" upper="2.094" effort="${motor_effort_limit}" velocity="${motor_velocity_limit}"/>
+        <dynamics damping="${motor_damping}"/>
+    </joint>
+
+    <link name="${namespace}_link_2">
+        <inertial>
+            <origin xyz="0 0 0.11" rpy="0 0 0"/>
+            <mass value="1.59"/>
+            <inertia ixx="0.009" ixy="0" ixz="0" iyy="0.009" iyz="0" izz="0.004"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0.05 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="../Meshes/link-2.gltf"/>
+            </geometry>
+        </visual>
+
+        <collision name="${namespace}_link_2_base_collision">
+            <origin xyz="0 0.01 0.07" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.08 0.1 0.18"/>
+            </geometry>
+        </collision>
+
+        <collision name="${namespace}_link_2_motor_collision">
+            <origin xyz="0 -0.01 0.22" rpy="1.57 0 0"/>
+            <geometry>
+                <cylinder length="${motor_collision_length}" radius="${motor_collision_radius}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="${namespace}_joint_2" type="revolute">
+        <parent link="${namespace}_link_2"/>
+        <child link="${namespace}_link_3"/>
+        <origin xyz="0 0 0.22" rpy="0 0 0"/>
+        <axis xyz="0 1 0" />
+        <limit lower="-2.094" upper="2.094" effort="${motor_effort_limit}" velocity="${motor_velocity_limit}"/>
+        <dynamics damping="${motor_damping}"/>
+    </joint>
+
+    <link name="${namespace}_link_3">
+        <inertial>
+            <origin xyz="0 0.015 0.2425" rpy="0 0 0"/>
+            <mass value="5.00"/>
+            <inertia ixx="0.107" ixy="0" ixz="0" iyy="0.103" iyz="0" izz="0.014"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0 -0.05 0" rpy="0 0 1.57"/>
+            <geometry>
+                <mesh filename="../Meshes/link-3.gltf"/>
+            </geometry>
+        </visual>
+
+        <collision name="${namespace}_link_3_base_collision">
+            <origin xyz="0 -0.015 0.2" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.11 0.15 0.45"/>
+            </geometry>
+        </collision>
+
+        <collision name="${namespace}_link_3_uib_collision">
+            <origin xyz="0 -0.01 0.46" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.075"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Transmission definitions -->
+    <transmission name="${namespace}_tran_0">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${namespace}_joint_0">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="${namespace}_actuator_0">
+            <mechanicalReduction>1</mechanicalReduction>
+            <drake:gear_ratio value="${motor_gear_ratio}"/>
+            <drake:rotor_inertia value="${motor_rotor_inertia}"/>
+        </actuator>
+    </transmission>
+
+    <transmission name="${namespace}_tran_1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${namespace}_joint_1">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="${namespace}_actuator_1">
+            <mechanicalReduction>1</mechanicalReduction>
+            <drake:gear_ratio value="${motor_gear_ratio}"/>
+            <drake:rotor_inertia value="${motor_rotor_inertia}"/>
+        </actuator>
+    </transmission>
+
+    <transmission name="${namespace}_tran_2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${namespace}_joint_2">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="${namespace}_actuator_2">
+            <mechanicalReduction>1</mechanicalReduction>
+            <drake:gear_ratio value="${motor_gear_ratio}"/>
+            <drake:rotor_inertia value="${motor_rotor_inertia}"/>
+        </actuator>
+    </transmission>
+    
+</xacro:macro>
+
+</robot>

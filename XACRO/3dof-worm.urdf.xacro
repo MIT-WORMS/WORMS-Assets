@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot name="worm" xmlns:drake="http://drake.mit.edu" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- Arguments -->
+<xacro:arg name="name" default=""/>
+
+<xacro:if value="$(eval name == '')">
+    <xacro:error msg="'name' was not provided"/>
+</xacro:if>
+
+<!-- Include xacro files -->
+<xacro:include filename="3dof-worm.macro.xacro"/>
+
+<!-- Create a default worm fixed at the origin with the name passed -->
+<xacro:worm namespace="$(eval name)" base_link="world" base_xyz="0 0 0" base_rpy="0 0 0"/>
+
+</robot>
