@@ -13,5 +13,5 @@ sudo apt install ros-<ros2-distro>-xacro
 The following code will compile a single WORM, fixed at the origin, with the pony namespace, and store it in the URDFs folder.
 
 ```
-rosrun xacro xacro --arg name:=pony XACRO/3dof-worm.urdf.xacro > URDFs/pony-worm.urdf
+ros2 run xacro xacro --arg name:=pony XACRO/3dof-worm.urdf.xacro > URDFs/pony-worm.urdf
 ```
