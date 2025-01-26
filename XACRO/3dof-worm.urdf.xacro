@@ -12,6 +12,6 @@
 <xacro:include filename="3dof-worm.macro.xacro"/>
 
 <!-- Create a default worm fixed at the origin with the name passed -->
-<xacro:worm namespace="$(eval name)" base_link="world" base_xyz="0 0 0" base_rpy="0 0 0"/>
+<xacro:worm namespace="$(eval name)" parent_link="world" base_xyz="0 0 0" base_rpy="0 0 0"/>
 
 </robot>

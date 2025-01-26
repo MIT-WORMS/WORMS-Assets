@@ -4,11 +4,15 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="worm" xmlns:drake="http://drake.mit.edu">
-  <link name="pony_base"/>
-  <joint name="pony_joint_fixed_0" type="fixed">
+  <joint name="pony_uib_joint_fixed" type="fixed">
     <parent link="world"/>
-    <child link="pony_link_0"/>
+    <child link="pony_base"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <link name="pony_base"/>
+  <joint name="pony_base_joint_fixed" type="fixed">
+    <parent link="pony_base"/>
+    <child link="pony_link_0"/>
   </joint>
   <link name="pony_link_0">
     <inertial>
@@ -41,7 +45,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.145"/>
     <axis xyz="1 0 0"/>
     <limit effort="120" lower="-1.57" upper="1.57" velocity="5.02654824"/>
-    <dynamics damping="0.8487"/>
+    <dynamics damping="0.0028"/>
   </joint>
   <link name="pony_link_1">
     <inertial>
@@ -74,7 +78,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.255"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.8487"/>
+    <dynamics damping="0.0028"/>
   </joint>
   <link name="pony_link_2">
     <inertial>
@@ -107,7 +111,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.22"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.8487"/>
+    <dynamics damping="0.0028"/>
   </joint>
   <link name="pony_link_3">
     <inertial>

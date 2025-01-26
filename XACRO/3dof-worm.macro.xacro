@@ -1,8 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:drake="http://drake.mit.edu" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<!-- Macro for an entire worm -->
-<xacro:macro name="worm" params="namespace base_link base_xyz base_rpy">
+<!-- 
+//  Macro for an entire worm model with simple geometry collision.
+//
+//  Args:
+//      namespace: namespace that this worm publishes to
+//      parent_link: link name to affix the uib of this worm to
+//      base_xyz: translational offset of uib, ex: "0.2 0.1 0.1"
+//      base_rpy: rotational offset of uib, "0.2 0.1 0.1"
+-->
+<xacro:macro name="worm" params="namespace parent_link base_xyz base_rpy">
 
     <!-- Local parameters -->
     <xacro:property name="motor_collision_length" value="0.075"/>
@@ -13,12 +21,17 @@
     <xacro:property name="motor_gear_ratio" value="64"/>
     <xacro:property name="motor_rotor_inertia" value="0.00005645"/>
 
+    <joint name="${namespace}_uib_joint_fixed" type="fixed">
+        <parent link="${parent_link}"/>
+        <child link="${namespace}_base"/>
+        <origin xyz="${base_xyz}" rpy="${base_rpy}"/>
+    </joint>
+
     <link name="${namespace}_base"/>
 
-    <joint name="${namespace}_joint_fixed_0" type="fixed">
-        <parent link="${base_link}"/>
+    <joint name="${namespace}_base_joint_fixed" type="fixed">
+        <parent link="${namespace}_base"/>
         <child link="${namespace}_link_0"/>
-        <origin xyz="${base_xyz}" rpy="${base_rpy}"/>
     </joint>
 
     <link name="${namespace}_link_0">
