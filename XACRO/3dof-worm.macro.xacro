@@ -16,7 +16,7 @@
     <xacro:property name="motor_collision_radius" value="0.06"/>
     <xacro:property name="motor_effort_limit" value="120"/>
     <xacro:property name="motor_velocity_limit" value="5.02654824"/>
-    <xacro:property name="motor_damping" value="0.0028"/>
+    <xacro:property name="motor_damping" value="0.8487"/>
     <xacro:property name="motor_gear_ratio" value="64"/>
     <xacro:property name="motor_rotor_inertia" value="0.00005645"/>
 
