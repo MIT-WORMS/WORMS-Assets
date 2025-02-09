@@ -12,7 +12,7 @@
 <xacro:include filename="pallets.macro.xacro"/>
 
 <!-- Create a turtle pallet and attach worms to each corner uib -->
-<xacro:turtle/>
+<xacro:turtle spawn_z="1.35"/>
 <xacro:worm namespace="$(eval front_left)" parent_link="front_left_uib" base_xyz="0 0 0" base_rpy="0 0 0"/>
 <xacro:worm namespace="$(eval front_right)" parent_link="front_right_uib" base_xyz="0 0 0" base_rpy="0 0 0"/>
 <xacro:worm namespace="$(eval back_left)" parent_link="back_left_uib" base_xyz="0 0 0" base_rpy="0 0 0"/>

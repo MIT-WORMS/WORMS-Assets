@@ -4,16 +4,19 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="turtle" xmlns:drake="http://drake.mit.edu">
-  <joint name="temp" type="fixed">
-    <parent link="world"/>
+  <!-- Virtual link to offset the body by some fixed amount -->
+  <link name="virtual_turtle_body"/>
+  <joint name="virtual_turtle_body_joint_fixed" type="fixed">
+    <parent link="virtual_turtle_body"/>
     <child link="turtle_body"/>
+    <origin xyz="0 0 1.35"/>
   </joint>
   <!-- Main pallet -->
   <link name="turtle_body">
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0.0725"/>
-      <mass value="1.59"/>
-      <inertia ixx="0.010" ixy="0" ixz="0" iyy="0.010" iyz="0" izz="0.011"/>
+      <origin rpy="0 0 -1.57" xyz="0 0 -0.13"/>
+      <mass value="21.89"/>
+      <inertia ixx="0.9" ixy="0" ixz="0" iyy="1.5" iyz="0" izz="1.0"/>
     </inertial>
     <visual>
       <origin rpy="0 0 -1.57" xyz="0 0 0"/>
@@ -25,6 +28,18 @@
       <origin rpy="0 0 0" xyz="0 0 0.062"/>
       <geometry>
         <box size="0.8 0.4 0.15"/>
+      </geometry>
+    </collision>
+    <collision name="turtle_stand_collision">
+      <origin rpy="0 0 0" xyz="0 0 -0.2"/>
+      <geometry>
+        <box size="0.11 0.11 0.4"/>
+      </geometry>
+    </collision>
+    <collision name="turtle_plate_collision">
+      <origin rpy="0 0 0" xyz="0 0 -0.4"/>
+      <geometry>
+        <box size="0.8 0.4 0.02"/>
       </geometry>
     </collision>
   </link>
@@ -107,7 +122,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.145"/>
     <axis xyz="1 0 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="duck_link_1">
     <inertial>
@@ -140,7 +155,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.25"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="duck_link_2">
     <inertial>
@@ -173,7 +188,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.22"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="duck_link_3">
     <inertial>
@@ -275,7 +290,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.145"/>
     <axis xyz="1 0 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="frog_link_1">
     <inertial>
@@ -308,7 +323,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.25"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="frog_link_2">
     <inertial>
@@ -341,7 +356,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.22"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="frog_link_3">
     <inertial>
@@ -443,7 +458,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.145"/>
     <axis xyz="1 0 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="lion_link_1">
     <inertial>
@@ -476,7 +491,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.25"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="lion_link_2">
     <inertial>
@@ -509,7 +524,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.22"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="lion_link_3">
     <inertial>
@@ -611,7 +626,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.145"/>
     <axis xyz="1 0 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="pony_link_1">
     <inertial>
@@ -644,7 +659,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.25"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="pony_link_2">
     <inertial>
@@ -677,7 +692,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.22"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="pony_link_3">
     <inertial>

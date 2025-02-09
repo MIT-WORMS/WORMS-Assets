@@ -8,19 +8,22 @@
 <!-- |      front_left_uib, front_right_uib, front_center_uib                          | -->
 <!-- |      back_left_uib,  back_right_uib,  back_center_uib                           | -->
 <!-- =================================================================================== -->
-<xacro:macro name="turtle">
+<xacro:macro name="turtle" params="spawn_z">
 
-    <joint name="temp" type="fixed">
-        <parent link="world"/>
+    <!-- Virtual link to offset the body by some fixed amount -->
+    <link name="virtual_turtle_body"/>
+    <joint name="virtual_turtle_body_joint_fixed" type="fixed">
+        <parent link="virtual_turtle_body"/>
         <child link="turtle_body"/>
+        <origin xyz="0 0 ${spawn_z}"/>
     </joint>
 
     <!-- Main pallet -->
     <link name="turtle_body">
         <inertial>
-            <origin xyz="0 0 0.0725" rpy="0 0 0"/>
-            <mass value="1.59"/>
-            <inertia ixx="0.010" ixy="0" ixz="0" iyy="0.010" iyz="0" izz="0.011"/>
+            <origin xyz="0 0 -0.13" rpy="0 0 -1.57"/>
+            <mass value="21.89"/>
+            <inertia ixx="0.9" ixy="0" ixz="0" iyy="1.5" iyz="0" izz="1.0"/>
         </inertial>
 
         <visual>
@@ -34,6 +37,20 @@
             <origin xyz="0 0 0.062" rpy="0 0 0"/>
             <geometry>
                 <box size="0.8 0.4 0.15"/>
+            </geometry>            
+        </collision>
+
+        <collision name="turtle_stand_collision">
+            <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.11 0.11 0.4"/>
+            </geometry>            
+        </collision>
+
+        <collision name="turtle_plate_collision">
+            <origin xyz="0 0 -0.4" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.8 0.4 0.02"/>
             </geometry>            
         </collision>
     </link>
