@@ -93,7 +93,7 @@
         </collision>
 
         <collision name="${namespace}_link_1_motor_collision">
-            <origin xyz="0 0.008 0.255" rpy="1.57 0 0"/>
+            <origin xyz="0 -0.008 0.255" rpy="1.57 0 0"/>
             <geometry>
                 <cylinder length="${motor_collision_length}" radius="${motor_collision_radius}"/>
             </geometry>
@@ -103,7 +103,7 @@
     <joint name="${namespace}_joint_1" type="revolute">
         <parent link="${namespace}_link_1"/>
         <child link="${namespace}_link_2"/>
-        <origin xyz="0 0 0.255" rpy="0 0 0" />
+        <origin xyz="0 0 0.25" rpy="0 0 0" />
         <axis xyz="0 1 0" />
         <limit lower="-2.094" upper="2.094" effort="${motor_effort_limit}" velocity="${motor_velocity_limit}"/>
         <dynamics damping="${motor_damping}"/>
@@ -117,14 +117,14 @@
         </inertial>
 
         <visual>
-            <origin xyz="0 0.05 0" rpy="0 0 0"/>
+            <origin xyz="0 -0.05 0" rpy="0 0 3.14"/>
             <geometry>
                 <mesh filename="../Meshes/link-2.gltf"/>
             </geometry>
         </visual>
 
         <collision name="${namespace}_link_2_base_collision">
-            <origin xyz="0 0.01 0.07" rpy="0 0 0"/>
+            <origin xyz="0 -0.01 0.07" rpy="0 0 0"/>
             <geometry>
                 <box size="0.08 0.1 0.18"/>
             </geometry>

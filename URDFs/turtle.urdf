@@ -29,18 +29,18 @@
     </collision>
   </link>
   <!-- Front UIBs -->
-  <joint name="front_right_uib_joint_fixed" type="fixed">
-    <parent link="turtle_body"/>
-    <child link="front_right_uib"/>
-    <origin rpy="-1.57 -1.57 0" xyz="0.328 0.204 0.062"/>
-  </joint>
-  <link name="front_right_uib"/>
   <joint name="front_left_uib_joint_fixed" type="fixed">
     <parent link="turtle_body"/>
     <child link="front_left_uib"/>
-    <origin rpy="1.57 -1.57 0" xyz="0.328 -0.204 0.062"/>
+    <origin rpy="-1.57 1.57 0" xyz="0.328 0.204 0.062"/>
   </joint>
   <link name="front_left_uib"/>
+  <joint name="front_right_uib_joint_fixed" type="fixed">
+    <parent link="turtle_body"/>
+    <child link="front_right_uib"/>
+    <origin rpy="1.57 -1.57 0" xyz="0.328 -0.204 0.062"/>
+  </joint>
+  <link name="front_right_uib"/>
   <joint name="front_center_uib_joint_fixed" type="fixed">
     <parent link="turtle_body"/>
     <child link="front_center_uib"/>
@@ -48,18 +48,18 @@
   </joint>
   <link name="front_center_uib"/>
   <!-- Back UIBs -->
-  <joint name="back_right_uib_joint_fixed" type="fixed">
-    <parent link="turtle_body"/>
-    <child link="back_right_uib"/>
-    <origin rpy="-1.57 -1.57 0" xyz="-0.328 0.204 0.062"/>
-  </joint>
-  <link name="back_right_uib"/>
   <joint name="back_left_uib_joint_fixed" type="fixed">
     <parent link="turtle_body"/>
     <child link="back_left_uib"/>
-    <origin rpy="1.57 -1.57 0" xyz="-0.328 -0.204 0.062"/>
+    <origin rpy="-1.57 1.57 0" xyz="-0.328 0.204 0.062"/>
   </joint>
   <link name="back_left_uib"/>
+  <joint name="back_right_uib_joint_fixed" type="fixed">
+    <parent link="turtle_body"/>
+    <child link="back_right_uib"/>
+    <origin rpy="1.57 -1.57 0" xyz="-0.328 -0.204 0.062"/>
+  </joint>
+  <link name="back_right_uib"/>
   <joint name="back_center_uib_joint_fixed" type="fixed">
     <parent link="turtle_body"/>
     <child link="back_center_uib"/>
@@ -128,7 +128,7 @@
       </geometry>
     </collision>
     <collision name="duck_link_1_motor_collision">
-      <origin rpy="1.57 0 0" xyz="0 0.008 0.255"/>
+      <origin rpy="1.57 0 0" xyz="0 -0.008 0.255"/>
       <geometry>
         <cylinder length="0.075" radius="0.06"/>
       </geometry>
@@ -137,7 +137,7 @@
   <joint name="duck_joint_1" type="revolute">
     <parent link="duck_link_1"/>
     <child link="duck_link_2"/>
-    <origin rpy="0 0 0" xyz="0 0 0.255"/>
+    <origin rpy="0 0 0" xyz="0 0 0.25"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
     <dynamics damping="0.0028"/>
@@ -149,13 +149,13 @@
       <inertia ixx="0.009" ixy="0" ixz="0" iyy="0.009" iyz="0" izz="0.004"/>
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0 0.05 0"/>
+      <origin rpy="0 0 3.14" xyz="0 -0.05 0"/>
       <geometry>
         <mesh filename="../Meshes/link-2.gltf"/>
       </geometry>
     </visual>
     <collision name="duck_link_2_base_collision">
-      <origin rpy="0 0 0" xyz="0 0.01 0.07"/>
+      <origin rpy="0 0 0" xyz="0 -0.01 0.07"/>
       <geometry>
         <box size="0.08 0.1 0.18"/>
       </geometry>
@@ -296,7 +296,7 @@
       </geometry>
     </collision>
     <collision name="frog_link_1_motor_collision">
-      <origin rpy="1.57 0 0" xyz="0 0.008 0.255"/>
+      <origin rpy="1.57 0 0" xyz="0 -0.008 0.255"/>
       <geometry>
         <cylinder length="0.075" radius="0.06"/>
       </geometry>
@@ -305,7 +305,7 @@
   <joint name="frog_joint_1" type="revolute">
     <parent link="frog_link_1"/>
     <child link="frog_link_2"/>
-    <origin rpy="0 0 0" xyz="0 0 0.255"/>
+    <origin rpy="0 0 0" xyz="0 0 0.25"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
     <dynamics damping="0.0028"/>
@@ -317,13 +317,13 @@
       <inertia ixx="0.009" ixy="0" ixz="0" iyy="0.009" iyz="0" izz="0.004"/>
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0 0.05 0"/>
+      <origin rpy="0 0 3.14" xyz="0 -0.05 0"/>
       <geometry>
         <mesh filename="../Meshes/link-2.gltf"/>
       </geometry>
     </visual>
     <collision name="frog_link_2_base_collision">
-      <origin rpy="0 0 0" xyz="0 0.01 0.07"/>
+      <origin rpy="0 0 0" xyz="0 -0.01 0.07"/>
       <geometry>
         <box size="0.08 0.1 0.18"/>
       </geometry>
@@ -464,7 +464,7 @@
       </geometry>
     </collision>
     <collision name="lion_link_1_motor_collision">
-      <origin rpy="1.57 0 0" xyz="0 0.008 0.255"/>
+      <origin rpy="1.57 0 0" xyz="0 -0.008 0.255"/>
       <geometry>
         <cylinder length="0.075" radius="0.06"/>
       </geometry>
@@ -473,7 +473,7 @@
   <joint name="lion_joint_1" type="revolute">
     <parent link="lion_link_1"/>
     <child link="lion_link_2"/>
-    <origin rpy="0 0 0" xyz="0 0 0.255"/>
+    <origin rpy="0 0 0" xyz="0 0 0.25"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
     <dynamics damping="0.0028"/>
@@ -485,13 +485,13 @@
       <inertia ixx="0.009" ixy="0" ixz="0" iyy="0.009" iyz="0" izz="0.004"/>
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0 0.05 0"/>
+      <origin rpy="0 0 3.14" xyz="0 -0.05 0"/>
       <geometry>
         <mesh filename="../Meshes/link-2.gltf"/>
       </geometry>
     </visual>
     <collision name="lion_link_2_base_collision">
-      <origin rpy="0 0 0" xyz="0 0.01 0.07"/>
+      <origin rpy="0 0 0" xyz="0 -0.01 0.07"/>
       <geometry>
         <box size="0.08 0.1 0.18"/>
       </geometry>
@@ -632,7 +632,7 @@
       </geometry>
     </collision>
     <collision name="pony_link_1_motor_collision">
-      <origin rpy="1.57 0 0" xyz="0 0.008 0.255"/>
+      <origin rpy="1.57 0 0" xyz="0 -0.008 0.255"/>
       <geometry>
         <cylinder length="0.075" radius="0.06"/>
       </geometry>
@@ -641,7 +641,7 @@
   <joint name="pony_joint_1" type="revolute">
     <parent link="pony_link_1"/>
     <child link="pony_link_2"/>
-    <origin rpy="0 0 0" xyz="0 0 0.255"/>
+    <origin rpy="0 0 0" xyz="0 0 0.25"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
     <dynamics damping="0.0028"/>
@@ -653,13 +653,13 @@
       <inertia ixx="0.009" ixy="0" ixz="0" iyy="0.009" iyz="0" izz="0.004"/>
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0 0.05 0"/>
+      <origin rpy="0 0 3.14" xyz="0 -0.05 0"/>
       <geometry>
         <mesh filename="../Meshes/link-2.gltf"/>
       </geometry>
     </visual>
     <collision name="pony_link_2_base_collision">
-      <origin rpy="0 0 0" xyz="0 0.01 0.07"/>
+      <origin rpy="0 0 0" xyz="0 -0.01 0.07"/>
       <geometry>
         <box size="0.08 0.1 0.18"/>
       </geometry>

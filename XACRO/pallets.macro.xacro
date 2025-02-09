@@ -39,19 +39,19 @@
     </link>
 
     <!-- Front UIBs -->
-    <joint name="front_right_uib_joint_fixed" type="fixed">
-        <parent link="turtle_body"/>
-        <child link="front_right_uib"/>
-        <origin xyz="0.328 0.204 0.062" rpy="-1.57 -1.57 0"/>
-    </joint>
-    <link name="front_right_uib"/>
-
     <joint name="front_left_uib_joint_fixed" type="fixed">
         <parent link="turtle_body"/>
         <child link="front_left_uib"/>
-        <origin xyz="0.328 -0.204 0.062" rpy="1.57 -1.57 0"/>
+        <origin xyz="0.328 0.204 0.062" rpy="-1.57 1.57 0"/>
     </joint>
     <link name="front_left_uib"/>
+
+    <joint name="front_right_uib_joint_fixed" type="fixed">
+        <parent link="turtle_body"/>
+        <child link="front_right_uib"/>
+        <origin xyz="0.328 -0.204 0.062" rpy="1.57 -1.57 0"/>
+    </joint>
+    <link name="front_right_uib"/>
 
     <joint name="front_center_uib_joint_fixed" type="fixed">
         <parent link="turtle_body"/>
@@ -61,19 +61,19 @@
     <link name="front_center_uib"/>
 
     <!-- Back UIBs -->
-    <joint name="back_right_uib_joint_fixed" type="fixed">
-        <parent link="turtle_body"/>
-        <child link="back_right_uib"/>
-        <origin xyz="-0.328 0.204 0.062" rpy="-1.57 -1.57 0"/>
-    </joint>
-    <link name="back_right_uib"/>
-
     <joint name="back_left_uib_joint_fixed" type="fixed">
         <parent link="turtle_body"/>
         <child link="back_left_uib"/>
-        <origin xyz="-0.328 -0.204 0.062" rpy="1.57 -1.57 0"/>
+        <origin xyz="-0.328 0.204 0.062" rpy="-1.57 1.57 0"/>
     </joint>
     <link name="back_left_uib"/>
+
+    <joint name="back_right_uib_joint_fixed" type="fixed">
+        <parent link="turtle_body"/>
+        <child link="back_right_uib"/>
+        <origin xyz="-0.328 -0.204 0.062" rpy="1.57 -1.57 0"/>
+    </joint>
+    <link name="back_right_uib"/>
 
     <joint name="back_center_uib_joint_fixed" type="fixed">
         <parent link="turtle_body"/>
