@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot name="turtle" xmlns:drake="http://drake.mit.edu" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- Arguments -->
+<xacro:arg name="front_left" default="duck"/>
+<xacro:arg name="front_right" default="frog"/>
+<xacro:arg name="back_left" default="lion"/>
+<xacro:arg name="back_right" default="pony"/>
+
+<!-- Include xacro files -->
+<xacro:include filename="3dof-worm.macro.xacro"/>
+<xacro:include filename="pallets.macro.xacro"/>
+<xacro:include filename="species.macro.xacro"/>
+
+<!-- Create a turtle pallet and attach worms to each corner uib -->
+<xacro:turtle spawn_z="1.35"/>
+<xacro:worm namespace="$(eval front_left)" parent_link="front_left_uib" base_xyz="0 0 0" base_rpy="0 0 0"/>
+<xacro:worm namespace="$(eval front_right)" parent_link="front_right_uib" base_xyz="0 0 0" base_rpy="0 0 0"/>
+<xacro:worm namespace="$(eval back_left)" parent_link="back_left_uib" base_xyz="0 0 0" base_rpy="0 0 0"/>
+<xacro:worm namespace="$(eval back_right)" parent_link="back_right_uib" base_xyz="0 0 0" base_rpy="0 0 0"/>
+
+<!-- Attach a foot module to each worm -->
+<xacro:rubber_foot namespace="$(eval front_left)" parent_link="$(eval front_left)_end_uib"/>
+<xacro:rubber_foot namespace="$(eval front_right)" parent_link="$(eval front_right)_end_uib"/>
+<xacro:rubber_foot namespace="$(eval back_left)" parent_link="$(eval back_left)_end_uib"/>
+<xacro:rubber_foot namespace="$(eval back_right)" parent_link="$(eval back_right)_end_uib"/>
+
+</robot>

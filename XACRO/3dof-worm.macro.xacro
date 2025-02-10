@@ -3,6 +3,8 @@
 
 <!-- =================================================================================== -->
 <!-- |    Macro for an entire worm model with simple geometry collision.               | -->
+<!-- |    Downstream Links:                                                            | -->
+<!-- |      {namespace}_end_uib                                                        | -->
 <!-- |    Args:                                                                        | -->
 <!-- |      namespace: namespace that this worm publishes to                           | -->
 <!-- |      parent_link: link name to affix the uib of this worm to                    | -->
@@ -16,7 +18,7 @@
     <xacro:property name="motor_collision_radius" value="0.06"/>
     <xacro:property name="motor_effort_limit" value="120"/>
     <xacro:property name="motor_velocity_limit" value="5.02654824"/>
-    <xacro:property name="motor_damping" value="0.0028"/>
+    <xacro:property name="motor_damping" value="0.8487"/>
     <xacro:property name="motor_gear_ratio" value="64"/>
     <xacro:property name="motor_rotor_inertia" value="0.00005645"/>
 
@@ -93,7 +95,7 @@
         </collision>
 
         <collision name="${namespace}_link_1_motor_collision">
-            <origin xyz="0 0.008 0.255" rpy="1.57 0 0"/>
+            <origin xyz="0 -0.008 0.255" rpy="1.57 0 0"/>
             <geometry>
                 <cylinder length="${motor_collision_length}" radius="${motor_collision_radius}"/>
             </geometry>
@@ -103,7 +105,7 @@
     <joint name="${namespace}_joint_1" type="revolute">
         <parent link="${namespace}_link_1"/>
         <child link="${namespace}_link_2"/>
-        <origin xyz="0 0 0.255" rpy="0 0 0" />
+        <origin xyz="0 0 0.25" rpy="0 0 0" />
         <axis xyz="0 1 0" />
         <limit lower="-2.094" upper="2.094" effort="${motor_effort_limit}" velocity="${motor_velocity_limit}"/>
         <dynamics damping="${motor_damping}"/>
@@ -117,14 +119,14 @@
         </inertial>
 
         <visual>
-            <origin xyz="0 0.05 0" rpy="0 0 0"/>
+            <origin xyz="0 -0.05 0" rpy="0 0 3.14"/>
             <geometry>
                 <mesh filename="../Meshes/link-2.gltf"/>
             </geometry>
         </visual>
 
         <collision name="${namespace}_link_2_base_collision">
-            <origin xyz="0 0.01 0.07" rpy="0 0 0"/>
+            <origin xyz="0 -0.01 0.07" rpy="0 0 0"/>
             <geometry>
                 <box size="0.08 0.1 0.18"/>
             </geometry>
@@ -175,6 +177,14 @@
             </geometry>
         </collision>
     </link>
+
+    <!-- Downstream link -->
+    <joint name="${namespace}_end_uib_joint_fixed" type="fixed">
+        <parent link="${namespace}_link_3"/>
+        <child link="${namespace}_end_uib"/>
+        <origin xyz="0 -0.012 0.498" rpy="3.14 0 -0.35"/>
+    </joint>
+    <link name="${namespace}_end_uib"/>
 
     <!-- Transmission definitions -->
     <transmission name="${namespace}_tran_0">
