@@ -215,6 +215,13 @@
       </geometry>
     </collision>
   </link>
+  <!-- Downstream link -->
+  <joint name="duck_end_uib_joint_fixed" type="fixed">
+    <parent link="duck_link_3"/>
+    <child link="duck_end_uib"/>
+    <origin rpy="3.14 0 -0.35" xyz="0 -0.012 0.498"/>
+  </joint>
+  <link name="duck_end_uib"/>
   <!-- Transmission definitions -->
   <transmission name="duck_tran_0">
     <type>transmission_interface/SimpleTransmission</type>
@@ -383,6 +390,13 @@
       </geometry>
     </collision>
   </link>
+  <!-- Downstream link -->
+  <joint name="frog_end_uib_joint_fixed" type="fixed">
+    <parent link="frog_link_3"/>
+    <child link="frog_end_uib"/>
+    <origin rpy="3.14 0 -0.35" xyz="0 -0.012 0.498"/>
+  </joint>
+  <link name="frog_end_uib"/>
   <!-- Transmission definitions -->
   <transmission name="frog_tran_0">
     <type>transmission_interface/SimpleTransmission</type>
@@ -551,6 +565,13 @@
       </geometry>
     </collision>
   </link>
+  <!-- Downstream link -->
+  <joint name="lion_end_uib_joint_fixed" type="fixed">
+    <parent link="lion_link_3"/>
+    <child link="lion_end_uib"/>
+    <origin rpy="3.14 0 -0.35" xyz="0 -0.012 0.498"/>
+  </joint>
+  <link name="lion_end_uib"/>
   <!-- Transmission definitions -->
   <transmission name="lion_tran_0">
     <type>transmission_interface/SimpleTransmission</type>
@@ -719,6 +740,13 @@
       </geometry>
     </collision>
   </link>
+  <!-- Downstream link -->
+  <joint name="pony_end_uib_joint_fixed" type="fixed">
+    <parent link="pony_link_3"/>
+    <child link="pony_end_uib"/>
+    <origin rpy="3.14 0 -0.35" xyz="0 -0.012 0.498"/>
+  </joint>
+  <link name="pony_end_uib"/>
   <!-- Transmission definitions -->
   <transmission name="pony_tran_0">
     <type>transmission_interface/SimpleTransmission</type>
@@ -753,4 +781,116 @@
       <drake:rotor_inertia value="5.645e-05"/>
     </actuator>
   </transmission>
+  <joint name="duck_rubber_foot_joint_fixed" type="fixed">
+    <parent link="duck_end_uib"/>
+    <child link="duck_rubber_foot"/>
+  </joint>
+  <link name="duck_rubber_foot">
+    <inertial>
+      <origin xyz="0 0 -0.01"/>
+      <mass value="1.54"/>
+      <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.007"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../Meshes/rubber-foot.gltf"/>
+      </geometry>
+    </visual>
+    <collision name="duck_rubber_foot_uib_collision">
+      <origin rpy="0 0 0" xyz="0 0 -0.01"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+    <collision name="duck_rubber_foot_pad_collision">
+      <origin rpy="0 0 0" xyz="0 0 -0.037"/>
+      <geometry>
+        <cylinder length="0.018" radius="0.115"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="frog_rubber_foot_joint_fixed" type="fixed">
+    <parent link="frog_end_uib"/>
+    <child link="frog_rubber_foot"/>
+  </joint>
+  <link name="frog_rubber_foot">
+    <inertial>
+      <origin xyz="0 0 -0.01"/>
+      <mass value="1.54"/>
+      <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.007"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../Meshes/rubber-foot.gltf"/>
+      </geometry>
+    </visual>
+    <collision name="frog_rubber_foot_uib_collision">
+      <origin rpy="0 0 0" xyz="0 0 -0.01"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+    <collision name="frog_rubber_foot_pad_collision">
+      <origin rpy="0 0 0" xyz="0 0 -0.037"/>
+      <geometry>
+        <cylinder length="0.018" radius="0.115"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="lion_rubber_foot_joint_fixed" type="fixed">
+    <parent link="lion_end_uib"/>
+    <child link="lion_rubber_foot"/>
+  </joint>
+  <link name="lion_rubber_foot">
+    <inertial>
+      <origin xyz="0 0 -0.01"/>
+      <mass value="1.54"/>
+      <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.007"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../Meshes/rubber-foot.gltf"/>
+      </geometry>
+    </visual>
+    <collision name="lion_rubber_foot_uib_collision">
+      <origin rpy="0 0 0" xyz="0 0 -0.01"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+    <collision name="lion_rubber_foot_pad_collision">
+      <origin rpy="0 0 0" xyz="0 0 -0.037"/>
+      <geometry>
+        <cylinder length="0.018" radius="0.115"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="pony_rubber_foot_joint_fixed" type="fixed">
+    <parent link="pony_end_uib"/>
+    <child link="pony_rubber_foot"/>
+  </joint>
+  <link name="pony_rubber_foot">
+    <inertial>
+      <origin xyz="0 0 -0.01"/>
+      <mass value="1.54"/>
+      <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.007"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../Meshes/rubber-foot.gltf"/>
+      </geometry>
+    </visual>
+    <collision name="pony_rubber_foot_uib_collision">
+      <origin rpy="0 0 0" xyz="0 0 -0.01"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+    <collision name="pony_rubber_foot_pad_collision">
+      <origin rpy="0 0 0" xyz="0 0 -0.037"/>
+      <geometry>
+        <cylinder length="0.018" radius="0.115"/>
+      </geometry>
+    </collision>
+  </link>
 </robot>

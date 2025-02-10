@@ -45,7 +45,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.145"/>
     <axis xyz="1 0 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="pony_link_1">
     <inertial>
@@ -78,7 +78,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.25"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="pony_link_2">
     <inertial>
@@ -111,7 +111,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.22"/>
     <axis xyz="0 1 0"/>
     <limit effort="120" lower="-2.094" upper="2.094" velocity="5.02654824"/>
-    <dynamics damping="0.0028"/>
+    <dynamics damping="0.8487"/>
   </joint>
   <link name="pony_link_3">
     <inertial>
@@ -138,6 +138,13 @@
       </geometry>
     </collision>
   </link>
+  <!-- Downstream link -->
+  <joint name="pony_end_uib_joint_fixed" type="fixed">
+    <parent link="pony_link_3"/>
+    <child link="pony_end_uib"/>
+    <origin rpy="3.14 0 -0.35" xyz="0 -0.012 0.498"/>
+  </joint>
+  <link name="pony_end_uib"/>
   <!-- Transmission definitions -->
   <transmission name="pony_tran_0">
     <type>transmission_interface/SimpleTransmission</type>

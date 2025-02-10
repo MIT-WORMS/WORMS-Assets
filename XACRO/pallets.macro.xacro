@@ -2,11 +2,16 @@
 <robot xmlns:drake="http://drake.mit.edu" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <!-- =================================================================================== -->
-<!-- |    Macro for a turtle pallet with six uib attachment points. To attach          | -->
-<!-- |    something to a uib, create a joint after calling this macro and set the      | -->
-<!-- |    parent link to one of the following:                                         | -->
-<!-- |      front_left_uib, front_right_uib, front_center_uib                          | -->
-<!-- |      back_left_uib,  back_right_uib,  back_center_uib                           | -->
+<!-- |    Macro for a turtle pallet with six uib attachment points.                    | -->
+<!-- |    Downstream Links:                                                            | -->
+<!-- |      front_left_uib                                                             | -->
+<!-- |      front_right_uib                                                            | -->
+<!-- |      front_center_uib                                                           | -->
+<!-- |      back_left_uib                                                              | -->
+<!-- |      back_right_uib                                                             | -->
+<!-- |      back_center_uib                                                            | -->
+<!-- |    Args:                                                                        | -->
+<!-- |      spawn_z: height (in m) to spawn the pallet at                              | -->
 <!-- =================================================================================== -->
 <xacro:macro name="turtle" params="spawn_z">
 

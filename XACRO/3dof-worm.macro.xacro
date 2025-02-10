@@ -3,6 +3,8 @@
 
 <!-- =================================================================================== -->
 <!-- |    Macro for an entire worm model with simple geometry collision.               | -->
+<!-- |    Downstream Links:                                                            | -->
+<!-- |      {namespace}_end_uib                                                        | -->
 <!-- |    Args:                                                                        | -->
 <!-- |      namespace: namespace that this worm publishes to                           | -->
 <!-- |      parent_link: link name to affix the uib of this worm to                    | -->
@@ -175,6 +177,14 @@
             </geometry>
         </collision>
     </link>
+
+    <!-- Downstream link -->
+    <joint name="${namespace}_end_uib_joint_fixed" type="fixed">
+        <parent link="${namespace}_link_3"/>
+        <child link="${namespace}_end_uib"/>
+        <origin xyz="0 -0.012 0.498" rpy="3.14 0 -0.35"/>
+    </joint>
+    <link name="${namespace}_end_uib"/>
 
     <!-- Transmission definitions -->
     <transmission name="${namespace}_tran_0">

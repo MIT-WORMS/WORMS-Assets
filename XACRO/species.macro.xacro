@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot xmlns:drake="http://drake.mit.edu" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- =================================================================================== -->
+<!-- |    Macro for a single rubber foot species module.                               | -->
+<!-- |    Args:                                                                        | -->
+<!-- |      namespace: namespace to ensure uniqueness of names                         | -->
+<!-- |      parent_link: link name to affix the uib of this module to                  | -->
+<!-- =================================================================================== -->
+<xacro:macro name="rubber_foot" params="namespace parent_link">
+
+    <joint name="${namespace}_rubber_foot_joint_fixed" type="fixed">
+        <parent link="${parent_link}"/>
+        <child link="${namespace}_rubber_foot"/>
+    </joint>
+
+    <link name="${namespace}_rubber_foot">
+        <inertial>
+            <origin xyz="0 0 -0.01"/>
+            <mass value="1.54"/>
+            <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.007"/>
+        </inertial>
+        
+        <visual>
+            <geometry>
+                <mesh filename="../Meshes/rubber-foot.gltf"/>
+            </geometry>
+        </visual>
+
+        <collision name="${namespace}_rubber_foot_uib_collision">
+            <origin xyz="0 0 -0.01" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.05" radius="0.07"/>
+            </geometry>
+        </collision>
+
+        <collision name="${namespace}_rubber_foot_pad_collision">
+            <origin xyz="0 0 -0.037" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.018" radius="0.115"/>
+            </geometry>
+        </collision>
+    </link>
+
+</xacro:macro>
+
+</robot>
