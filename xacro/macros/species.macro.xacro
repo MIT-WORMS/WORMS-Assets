@@ -6,9 +6,9 @@
 <!-- |    Args:                                                                        | -->
 <!-- |      namespace: namespace to ensure uniqueness of names                         | -->
 <!-- |      parent_link: link name to affix the uib of this module to                  | -->
-<!-- |      mesh_type: type of mesh to link against, gltf or obj                       | -->
+<!-- |      mesh_type (optional): type of mesh to link against, gltf or obj            | -->
 <!-- =================================================================================== -->
-<xacro:macro name="rubber_foot" params="namespace parent_link mesh_type">
+<xacro:macro name="rubber_foot" params="namespace parent_link mesh_type:=obj">
 
     <joint name="${namespace}_rubber_foot_joint_fixed" type="fixed">
         <parent link="${parent_link}"/>

@@ -11,10 +11,10 @@
 <!-- |      back_right_uib                                                             | -->
 <!-- |      back_center_uib                                                            | -->
 <!-- |    Args:                                                                        | -->
-<!-- |      spawn_z: height (in m) to spawn the pallet at                              | -->
-<!-- |      mesh_type: type of mesh to link against, gltf or obj                       | -->
+<!-- |      spawn_z (optional): height (in m) to spawn the pallet at                   | -->
+<!-- |      mesh_type (optional): type of mesh to link against, gltf or obj            | -->
 <!-- =================================================================================== -->
-<xacro:macro name="turtle" params="spawn_z mesh_type">
+<xacro:macro name="turtle" params="spawn_z:=0 mesh_type:=obj">
 
     <!-- Virtual link to offset the body by some fixed amount -->
     <link name="virtual_turtle_body"/>
@@ -118,10 +118,10 @@
 <!-- |      back_left_uib                                                              | -->
 <!-- |      back_right_uib                                                             | -->
 <!-- |    Args:                                                                        | -->
-<!-- |      spawn_z: height (in m) to spawn the pallet at                              | -->
-<!-- |      mesh_type: type of mesh to link against, gltf or obj                       | -->
+<!-- |      spawn_z (optional): height (in m) to spawn the pallet at                   | -->
+<!-- |      mesh_type (optional): type of mesh to link against, gltf or obj            | -->
 <!-- =================================================================================== -->
-<xacro:macro name="hexapod" params="spawn_z mesh_type">
+<xacro:macro name="hexapod" params="spawn_z:=0 mesh_type:=obj">
 
     <!-- Virtual link to offset the body by some fixed amount -->
     <link name="virtual_hexapod_body"/>

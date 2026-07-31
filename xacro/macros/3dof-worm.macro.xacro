@@ -8,11 +8,11 @@
 <!-- |    Args:                                                                        | -->
 <!-- |      namespace: namespace that this worm publishes to                           | -->
 <!-- |      parent_link: link name to affix the uib of this worm to                    | -->
-<!-- |      base_xyz: translational offset of uib, ex: "0.2 0.1 0.1"                   | -->
-<!-- |      base_rpy: rotational offset of uib, "0.2 0.1 0.1"                          | -->
-<!-- |      mesh_type: type of mesh to link against, gltf or obj                       | -->
+<!-- |      base_xyz (optional): translational offset of uib, ex: "0.2 0.1 0.1"        | -->
+<!-- |      base_rpy (optional): rotational offset of uib, "0.2 0.1 0.1"               | -->
+<!-- |      mesh_type (optional): type of mesh to link against, gltf or obj            | -->
 <!-- =================================================================================== -->
-<xacro:macro name="worm" params="namespace parent_link base_xyz base_rpy mesh_type">
+<xacro:macro name="worm" params="namespace parent_link base_xyz:=0_0_0 base_rpy:=0_0_0 mesh_type:=obj">
 
     <!-- Local parameters -->
     <xacro:property name="motor_collision_length" value="0.075"/>
